@@ -1,0 +1,957 @@
+#:kivy 2.0.0
+#:import dp kivy.metrics.dp
+
+<FirstScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(0), dp(80), dp(0), dp(0)
+        spacing: dp(0)
+        Widget:
+            size_hint_y: 0.15
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: None, None
+            width: dp(400)
+            height: self.minimum_height
+            pos_hint: {'center_x': 0.5}
+            padding: dp(32)
+            spacing: dp(28)
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20]
+                Color:
+                    rgba: 0.85, 0.85, 0.85, 1
+                Line:
+                    width: 1.2
+                    rounded_rectangle: (*self.pos, *self.size, 20)
+            Label:
+                text: "Welcome to\nLokeshwarananda Eye Hospital"
+                font_size: '26sp'
+                bold: True
+                color: 0.1, 0.2, 0.3, 1
+                halign: 'center'
+                valign: 'middle'
+                text_size: self.size
+                size_hint_y: None
+                height: dp(70)
+            Button:
+                text: "Register"
+                size_hint_y: None
+                height: dp(48)
+                background_normal: ''
+                background_color: 0.2, 0.5, 0.8, 1
+                color: 1, 1, 1, 1
+                font_size: '18sp'
+                bold: True
+                on_press: app.root.current = 'register'
+            Button:
+                text: "Sign In"
+                size_hint_y: None
+                height: dp(48)
+                background_normal: ''
+                background_color: 0.8, 0.8, 0.8, 1
+                color: 0.2, 0.5, 0.8, 1
+                font_size: '18sp'
+                bold: True
+                on_press: app.root.current = 'signin'
+        Widget:
+            size_hint_y: 0.25
+
+<RegisterScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(0), dp(60), dp(0), dp(0)
+        spacing: dp(0)
+        Widget:
+            size_hint_y: 0.1
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: None, None
+            width: dp(400)
+            height: self.minimum_height
+            pos_hint: {'center_x': 0.5}
+            padding: dp(32)
+            spacing: dp(18)
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20]
+                Color:
+                    rgba: 0.85, 0.85, 0.85, 1
+                Line:
+                    width: 1.2
+                    rounded_rectangle: (*self.pos, *self.size, 20)
+            Label:
+                text: "Register"
+                font_size: '28sp'
+                bold: True
+                color: 0.1, 0.2, 0.3, 1
+                size_hint_y: None
+                height: dp(40)
+            TextInput:
+                id: aadhaar
+                hint_text: "Aadhaar"
+                size_hint_y: None
+                height: dp(44)
+                multiline: False
+                padding: dp(10)
+                background_normal: ''
+                background_color: 0.95, 0.95, 0.98, 1
+                foreground_color: 0.1, 0.2, 0.3, 1
+                cursor_color: 0.2, 0.4, 0.6, 1
+                font_size: '16sp'
+            TextInput:
+                id: name
+                hint_text: "Full Name"
+                size_hint_y: None
+                height: dp(44)
+                multiline: False
+                padding: dp(10)
+                background_normal: ''
+                background_color: 0.95, 0.95, 0.98, 1
+                foreground_color: 0.1, 0.2, 0.3, 1
+                cursor_color: 0.2, 0.4, 0.6, 1
+                font_size: '16sp'
+            TextInput:
+                id: dob
+                hint_text: "DOB (DD/MM/YYYY)"
+                size_hint_y: None
+                height: dp(44)
+                multiline: False
+                padding: dp(10)
+                background_normal: ''
+                background_color: 0.95, 0.95, 0.98, 1
+                foreground_color: 0.1, 0.2, 0.3, 1
+                cursor_color: 0.2, 0.4, 0.6, 1
+                font_size: '16sp'
+            TextInput:
+                id: sex
+                hint_text: "Sex (M/F/Other)"
+                size_hint_y: None
+                height: dp(44)
+                multiline: False
+                padding: dp(10)
+                background_normal: ''
+                background_color: 0.95, 0.95, 0.98, 1
+                foreground_color: 0.1, 0.2, 0.3, 1
+                cursor_color: 0.2, 0.4, 0.6, 1
+                font_size: '16sp'
+            TextInput:
+                id: phone
+                hint_text: "Phone (10 digits)"
+                size_hint_y: None
+                height: dp(44)
+                multiline: False
+                padding: dp(10)
+                background_normal: ''
+                background_color: 0.95, 0.95, 0.98, 1
+                foreground_color: 0.1, 0.2, 0.3, 1
+                cursor_color: 0.2, 0.4, 0.6, 1
+                font_size: '16sp'
+            Button:
+                text: "Register"
+                size_hint_y: None
+                height: dp(48)
+                background_normal: ''
+                background_color: 0.2, 0.5, 0.8, 1
+                color: 1, 1, 1, 1
+                font_size: '18sp'
+                bold: True
+                on_press: root.register_user()
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: None
+                height: dp(40)
+                spacing: dp(8)
+                Widget:
+                    size_hint_x: 0.3
+                Label:
+                    text: "Already registered?"
+                    size_hint_x: 0.5
+                    color: 0.2, 0.3, 0.4, 1
+                    font_size: '15sp'
+                    halign: 'right'
+                    valign: 'middle'
+                    text_size: self.size
+                Button:
+                    text: "Sign In"
+                    size_hint_x: 0.5
+                    height: dp(36)
+                    background_normal: ''
+                    background_color: 0.8, 0.8, 0.8, 1
+                    color: 0.2, 0.5, 0.8, 1
+                    font_size: '15sp'
+                    on_press: app.root.current = 'signin'
+        Widget:
+            size_hint_y: 0.2
+
+<SignInScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(0), dp(80), dp(0), dp(0)
+        spacing: dp(0)
+        Widget:
+            size_hint_y: 0.15
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: None, None
+            width: dp(400)
+            height: self.minimum_height
+            pos_hint: {'center_x': 0.5}
+            padding: dp(32)
+            spacing: dp(18)
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20]
+                Color:
+                    rgba: 0.85, 0.85, 0.85, 1
+                Line:
+                    width: 1.2
+                    rounded_rectangle: (*self.pos, *self.size, 20)
+            Label:
+                text: "Sign In"
+                font_size: '28sp'
+                bold: True
+                color: 0.1, 0.2, 0.3, 1
+                size_hint_y: None
+                height: dp(40)
+            TextInput:
+                id: aadhaar
+                hint_text: "Aadhaar"
+                size_hint_y: None
+                height: dp(44)
+                multiline: False
+                padding: dp(10)
+                background_normal: ''
+                background_color: 0.95, 0.95, 0.98, 1
+                foreground_color: 0.1, 0.2, 0.3, 1
+                cursor_color: 0.2, 0.4, 0.6, 1
+                font_size: '16sp'
+            TextInput:
+                id: phone
+                hint_text: "Phone"
+                size_hint_y: None
+                height: dp(44)
+                multiline: False
+                padding: dp(10)
+                background_normal: ''
+                background_color: 0.95, 0.95, 0.98, 1
+                foreground_color: 0.1, 0.2, 0.3, 1
+                cursor_color: 0.2, 0.4, 0.6, 1
+                font_size: '16sp'
+            Button:
+                text: "Sign In"
+                size_hint_y: None
+                height: dp(48)
+                background_normal: ''
+                background_color: 0.2, 0.5, 0.8, 1
+                color: 1, 1, 1, 1
+                font_size: '18sp'
+                bold: True
+                on_press: root.sign_in_user()
+            Button:
+                text: "Back to Register"
+                size_hint_y: None
+                height: dp(36)
+                background_normal: ''
+                background_color: 0.8, 0.8, 0.8, 1
+                color: 0.2, 0.5, 0.8, 1
+                font_size: '15sp'
+                on_press: app.root.current = 'register'
+        Widget:
+            size_hint_y: 0.25
+
+<ProfileScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(0), dp(60), dp(0), dp(0)
+        spacing: dp(0)
+        Widget:
+            size_hint_y: 0.1
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: None, None
+            width: dp(400)
+            height: self.minimum_height
+            pos_hint: {'center_x': 0.5}
+            padding: dp(32)
+            spacing: dp(18)
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20]
+                Color:
+                    rgba: 0.85, 0.85, 0.85, 1
+                Line:
+                    width: 1.2
+                    rounded_rectangle: (*self.pos, *self.size, 20)
+            Label:
+                text: "Profile"
+                font_size: '28sp'
+                bold: True
+                color: 0.1, 0.2, 0.3, 1
+                size_hint_y: None
+                height: dp(40)
+            TextInput:
+                id: aadhaar
+                hint_text: "Aadhaar"
+                readonly: True
+                size_hint_y: None
+                height: dp(44)
+                multiline: False
+                padding: dp(10)
+                background_normal: ''
+                background_color: 0.95, 0.95, 0.98, 1
+                foreground_color: 0.1, 0.2, 0.3, 1
+                cursor_color: 0.2, 0.4, 0.6, 1
+                font_size: '16sp'
+            TextInput:
+                id: name
+                hint_text: "Full Name"
+                size_hint_y: None
+                height: dp(44)
+                multiline: False
+                padding: dp(10)
+                background_normal: ''
+                background_color: 0.95, 0.95, 0.98, 1
+                foreground_color: 0.1, 0.2, 0.3, 1
+                cursor_color: 0.2, 0.4, 0.6, 1
+                font_size: '16sp'
+            TextInput:
+                id: dob
+                hint_text: "DOB"
+                size_hint_y: None
+                height: dp(44)
+                multiline: False
+                padding: dp(10)
+                background_normal: ''
+                background_color: 0.95, 0.95, 0.98, 1
+                foreground_color: 0.1, 0.2, 0.3, 1
+                cursor_color: 0.2, 0.4, 0.6, 1
+                font_size: '16sp'
+            TextInput:
+                id: sex
+                hint_text: "Sex"
+                size_hint_y: None
+                height: dp(44)
+                multiline: False
+                padding: dp(10)
+                background_normal: ''
+                background_color: 0.95, 0.95, 0.98, 1
+                foreground_color: 0.1, 0.2, 0.3, 1
+                cursor_color: 0.2, 0.4, 0.6, 1
+                font_size: '16sp'
+            TextInput:
+                id: phone
+                hint_text: "Phone"
+                size_hint_y: None
+                height: dp(44)
+                multiline: False
+                padding: dp(10)
+                background_normal: ''
+                background_color: 0.95, 0.95, 0.98, 1
+                foreground_color: 0.1, 0.2, 0.3, 1
+                cursor_color: 0.2, 0.4, 0.6, 1
+                font_size: '16sp'
+            Button:
+                text: "Save and Continue"
+                size_hint_y: None
+                height: dp(48)
+                background_normal: ''
+                background_color: 0.2, 0.5, 0.8, 1
+                color: 1, 1, 1, 1
+                font_size: '18sp'
+                bold: True
+                on_release: root.save_and_continue()
+            Button:
+                text: "Access Database"
+                size_hint_y: None
+                height: dp(48)
+                background_normal: ''
+                background_color: 0.8, 0.8, 0.8, 1
+                color: 0.2, 0.5, 0.8, 1
+                font_size: '18sp'
+                bold: True
+                on_release: root.go_to_database(self)
+        Widget:
+            size_hint_y: 0.2
+
+<EyeImageScreen>:
+    name: "eye_image"
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(0), dp(60), dp(0), dp(0)
+        spacing: dp(0)
+        Widget:
+            size_hint_y: 0.1
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: None, None
+            width: dp(400)
+            height: self.minimum_height
+            pos_hint: {'center_x': 0.5}
+            padding: dp(32)
+            spacing: dp(18)
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20]
+                Color:
+                    rgba: 0.85, 0.85, 0.85, 1
+                Line:
+                    width: 1.2
+                    rounded_rectangle: (*self.pos, *self.size, 20)
+            Widget:
+                size_hint_y: None
+                height: dp(10)
+            Label:
+                text: "Eye Image"
+                font_size: '28sp'
+                bold: True
+                color: 0.1, 0.2, 0.3, 1
+                halign: 'center'
+                valign: 'middle'
+                text_size: self.size
+                size_hint_y: None
+                height: dp(40)
+            Label:
+                text: "Make sure the image is well-lit\nand the eye is clearly visible"
+                font_size: '16sp'
+                color: 0.2, 0.3, 0.4, 1
+                halign: 'center'
+                valign: 'middle'
+                text_size: self.size
+                size_hint_y: None
+                height: dp(40)
+            Button:
+                text: "Take picture with camera"
+                size_hint_y: None
+                height: dp(48)
+                background_normal: ''
+                background_color: 0.2, 0.5, 0.8, 1
+                color: 1, 1, 1, 1
+                font_size: '18sp'
+                bold: True
+                on_press: root.goto_camera()
+            Button:
+                text: "Upload picture from gallery"
+                size_hint_y: None
+                height: dp(48)
+                background_normal: ''
+                background_color: 0.8, 0.8, 0.8, 1
+                color: 0.2, 0.5, 0.8, 1
+                font_size: '18sp'
+                bold: True
+                on_press: root.goto_gallery()
+            Button:
+                text: "Back"
+                size_hint_y: None
+                height: dp(44)
+                background_normal: ''
+                background_color: 0.9, 0.9, 0.9, 1
+                color: 0.2, 0.5, 0.8, 1
+                font_size: '16sp'
+                bold: True
+                on_press: app.root.current = 'profile'
+        Widget:
+            size_hint_y: 0.2
+
+<CameraCaptureScreen>:
+    name: "camera_capture"
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(10)
+        spacing: dp(10)
+        
+        Label:
+            text: "Camera Capture"
+            font_size: '24sp'
+            bold: True
+            color: 0.1, 0.2, 0.3, 1
+            size_hint_y: None
+            height: dp(50)
+        
+        Label:
+            text: "Camera temporarily unavailable.\nPlease use Gallery Upload to select an existing image."
+            font_size: '18sp'
+            color: 1, 0, 0, 1
+            halign: 'center'
+            text_size: self.size
+            
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: dp(60)
+            spacing: dp(10)
+            
+            Button:
+                text: "Back"
+                background_normal: ''
+                background_color: 0.8, 0.8, 0.8, 1
+                color: 0.2, 0.5, 0.8, 1
+                font_size: '18sp'
+                bold: True
+                on_press: root.go_back()
+                
+            Button:
+                text: "Go to Gallery"
+                background_normal: ''
+                background_color: 0.2, 0.5, 0.8, 1
+                color: 1, 1, 1, 1
+                font_size: '18sp'
+                bold: True
+                on_press: app.root.current = 'gallery_upload'
+
+<GalleryUploadScreen>:
+    name: "gallery_upload"
+    # This screen will be built programmatically in Python
+    # See the updated GalleryUploadScreen class
+
+<ViewImageScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(0), dp(60), dp(0), dp(0)
+        spacing: dp(0)
+        Widget:
+            size_hint_y: 0.1
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: None, None
+            width: dp(400)
+            height: self.minimum_height
+            pos_hint: {'center_x': 0.5}
+            padding: dp(32)
+            spacing: dp(18)
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20]
+                Color:
+                    rgba: 0.85, 0.85, 0.85, 1
+                Line:
+                    width: 1.2
+                    rounded_rectangle: (*self.pos, *self.size, 20)
+            Label:
+                text: "Captured Image"
+                font_size: '28sp'
+                bold: True
+                color: 0.1, 0.2, 0.3, 1
+                size_hint_y: None
+                height: dp(40)
+            Image:
+                id: image
+                source: ""
+                size_hint: None, None
+                size: dp(200), dp(200)
+                pos_hint: {"center_x": 0.5}
+                allow_stretch: True
+                keep_ratio: True
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: None
+                height: dp(48)
+                spacing: dp(16)
+                Button:
+                    text: "Retake"
+                    background_normal: ''
+                    background_color: 0.8, 0.8, 0.8, 1
+                    color: 0.2, 0.5, 0.8, 1
+                    font_size: '18sp'
+                    bold: True
+                    on_press: app.root.current = 'eye_image'
+                Button:
+                    text: "Confirm"
+                    background_normal: ''
+                    background_color: 0.2, 0.5, 0.8, 1
+                    color: 1, 1, 1, 1
+                    font_size: '18sp'
+                    bold: True
+                    on_press: root.go_to_image_edit()
+        Widget:
+            size_hint_y: 0.2
+
+<ImageEditScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(0), dp(60), dp(0), dp(0)
+        spacing: dp(0)
+        Widget:
+            size_hint_y: 0.1
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: None, None
+            width: dp(400)
+            height: self.minimum_height
+            pos_hint: {'center_x': 0.5}
+            padding: dp(32)
+            spacing: dp(18)
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20]
+                Color:
+                    rgba: 0.85, 0.85, 0.85, 1
+                Line:
+                    width: 1.2
+                    rounded_rectangle: (*self.pos, *self.size, 20)
+            Label:
+                text: "Center the pupil"
+                font_size: '28sp'
+                bold: True
+                color: 0.1, 0.2, 0.3, 1
+                size_hint_y: None
+                height: dp(40)
+            Image:
+                id: edit_image
+                source: ""
+                size_hint: None, None
+                size: dp(200), dp(200)
+                pos_hint: {"center_x": 0.5}
+                allow_stretch: True
+                keep_ratio: True
+            BoxLayout:
+                orientation: "horizontal"
+                size_hint_y: None
+                height: dp(48)
+                spacing: dp(8)
+                Button:
+                    text: "Rotate"
+                    background_normal: ""
+                    background_color: 0.9, 0.9, 0.9, 1
+                    color: 0.2, 0.5, 0.8, 1
+                    font_size: "16sp"
+                    on_press: root.rotate_image()
+                Button:
+                    text: "Crop"
+                    background_normal: ""
+                    background_color: 0.9, 0.9, 0.9, 1
+                    color: 0.2, 0.5, 0.8, 1
+                    font_size: "16sp"
+                    on_press: root.crop_image()
+                Button:
+                    text: "Grayscale"
+                    background_normal: ""
+                    background_color: 0.9, 0.9, 0.9, 1
+                    color: 0.2, 0.5, 0.8, 1
+                    font_size: "16sp"
+                    on_press: root.apply_filter("grayscale")
+            BoxLayout:
+                orientation: "horizontal"
+                size_hint_y: None
+                height: dp(48)
+                spacing: dp(16)
+                Button:
+                    text: "Retake"
+                    background_normal: ""
+                    background_color: 0.8, 0.8, 0.8, 1
+                    color: 0.2, 0.5, 0.8, 1
+                    font_size: "18sp"
+                    bold: True
+                    on_press: app.root.current = "eye_image"
+                Button:
+                    text: "Confirm"
+                    background_normal: ""
+                    background_color: 0.2, 0.5, 0.8, 1
+                    color: 1, 1, 1, 1
+                    font_size: "18sp"
+                    bold: True
+                    on_press: root.confirm()
+        Widget:
+            size_hint_y: 0.2
+
+<ResultScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(0), dp(60), dp(0), dp(0)
+        spacing: dp(0)
+        Widget:
+            size_hint_y: 0.1
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: None, None
+            width: dp(400)
+            height: self.minimum_height
+            pos_hint: {'center_x': 0.5}
+            padding: dp(32)
+            spacing: dp(18)
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20]
+                Color:
+                    rgba: 0.85, 0.85, 0.85, 1
+                Line:
+                    width: 1.2
+                    rounded_rectangle: (*self.pos, *self.size, 20)
+            Label:
+                text: "Result"
+                font_size: '28sp'
+                bold: True
+                color: 0.1, 0.2, 0.3, 1
+                size_hint_y: None
+                height: dp(40)
+            FloatLayout:
+                size_hint: None, None
+                size: dp(200), dp(200)
+                pos_hint: {'center_x': 0.5}
+                canvas:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Ellipse:
+                        pos: self.pos
+                        size: self.size
+                Image:
+                    id: result_image
+                    source: ""
+                    size_hint: None, None
+                    size: dp(180), dp(180)
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    allow_stretch: True
+                    keep_ratio: True
+            Label:
+                id: prediction
+                text: "Prediction: Processing..."
+                font_size: '20sp'
+                color: 0.2, 0.3, 0.4, 1
+                size_hint_y: None
+                height: dp(30)
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: None
+                height: dp(48)
+                spacing: dp(16)
+                Button:
+                    text: "Retake"
+                    background_normal: ''
+                    background_color: 0.8, 0.8, 0.8, 1
+                    color: 0.2, 0.5, 0.8, 1
+                    font_size: '18sp'
+                    bold: True
+                    on_press: root.retake()
+                Button:
+                    text: "Readjust"
+                    background_normal: ''
+                    background_color: 0.8, 0.8, 0.8, 1
+                    color: 0.2, 0.5, 0.8, 1
+                    font_size: '18sp'
+                    bold: True
+                    on_press: root.readjust()
+                Button:
+                    text: "Confirm"
+                    background_normal: ''
+                    background_color: 0.2, 0.5, 0.8, 1
+                    color: 1, 1, 1, 1
+                    font_size: '18sp'
+                    bold: True
+                    on_press: app.root.current = 'save_to_db'
+        Widget:
+            size_hint_y: 0.2
+
+<SaveToDbScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(0), dp(60), dp(0), dp(0)
+        spacing: dp(0)
+        Widget:
+            size_hint_y: 0.1
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: None, None
+            width: dp(400)
+            height: self.minimum_height
+            pos_hint: {'center_x': 0.5}
+            padding: dp(32)
+            spacing: dp(18)
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20]
+                Color:
+                    rgba: 0.85, 0.85, 0.85, 1
+                Line:
+                    width: 1.2
+                    rounded_rectangle: (*self.pos, *self.size, 20)
+            Label:
+                text: "Save to Database"
+                font_size: '28sp'
+                bold: True
+                color: 0.1, 0.2, 0.3, 1
+                size_hint_y: None
+                height: dp(40)
+            Image:
+                id: save_image
+                source: ""
+                size_hint: None, None
+                size: dp(200), dp(200)
+                pos_hint: {'center_x': 0.5}
+                allow_stretch: True
+                keep_ratio: True
+            Label:
+                id: prediction
+                text: "Prediction: Processing..."
+                font_size: '20sp'
+                color: 0.2, 0.3, 0.4, 1
+                size_hint_y: None
+                height: dp(30)
+            TextInput:
+                id: notes
+                hint_text: "Enter notes here"
+                size_hint_y: None
+                height: dp(60)
+                multiline: True
+                padding: dp(10)
+                background_normal: ''
+                background_color: 0.95, 0.95, 0.98, 1
+                foreground_color: 0.1, 0.2, 0.3, 1
+                font_size: '16sp'
+            Button:
+                text: "Save to Database"
+                size_hint_y: None
+                height: dp(48)
+                background_normal: ''
+                background_color: 0.2, 0.5, 0.8, 1
+                color: 1, 1, 1, 1
+                font_size: '18sp'
+                bold: True
+                on_press: root.save_to_db()
+        Widget:
+            size_hint_y: 0.2
+
+<DatabaseScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(0), dp(60), dp(0), dp(0)
+        spacing: dp(0)
+        Widget:
+            size_hint_y: 0.1
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: None, None
+            width: dp(400)
+            height: self.minimum_height
+            pos_hint: {'center_x': 0.5}
+            padding: dp(32)
+            spacing: dp(18)
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [20]
+                Color:
+                    rgba: 0.85, 0.85, 0.85, 1
+                Line:
+                    width: 1.2
+                    rounded_rectangle: (*self.pos, *self.size, 20)
+            Label:
+                text: "Your Visits"
+                font_size: '28sp'
+                bold: True
+                color: 0.1, 0.2, 0.3, 1
+                size_hint_y: None
+                height: dp(40)
+            BoxLayout:
+                id: visits_box
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+            Button:
+                text: "Take New Image"
+                size_hint_y: None
+                height: dp(48)
+                background_normal: ''
+                background_color: 0.2, 0.5, 0.8, 1
+                color: 1, 1, 1, 1
+                font_size: '18sp'
+                bold: True
+                on_release: root.go_to_eye_image(self)
+            Button:
+                text: "⬅ Back"
+                size_hint_y: None
+                height: dp(44)
+                background_normal: ''
+                background_color: 0.9, 0.9, 0.9, 1
+                color: 0.2, 0.5, 0.8, 1
+                font_size: '16sp'
+                bold: True
+                on_press: app.root.current = 'profile'
+        Widget:
+            size_hint_y: 0.2
+            
+<VisitDetailScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(32)
+        spacing: dp(18)
+        Image:
+            id: visit_image
+            source: ''
+            size_hint_y: 0.6
+        Label:
+            text: "Prediction:"
+            font_size: '20sp'
+            bold: True
+            size_hint_y: None
+            height: dp(30)
+            color: 0.2, 0.5, 0.8, 1
+        Label:
+            id: visit_prediction
+            text: ''
+            font_size: '16sp'
+            size_hint_y: None
+            height: dp(40)
+            color: 0.2, 0.5, 0.8, 1
+        Label:
+            text: "Notes:"
+            font_size: '20sp'
+            bold: True
+            size_hint_y: None
+            height: dp(70)
+            color: 0.2, 0.5, 0.8, 1
+        Label:
+            id: visit_notes
+            text: ''
+            font_size: '16sp'
+            size_hint_y: None
+            height: dp(70)
+            color: 0.2, 0.5, 0.8, 1
+        Button:
+            text: "⬅ Back"
+            size_hint_y: None
+            height: dp(48)
+            background_normal: ''
+            background_color: 0.8, 0.8, 0.8, 1
+            color: 0.2, 0.5, 0.8, 1
+            font_size: '18sp'
+            bold: True
+            on_press: app.root.current = 'database'
